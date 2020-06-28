@@ -6,19 +6,22 @@ import "./styles/main.scss";
 
 //links
 const screen = document.querySelector('#screen'); //parent to all
-const story = document.querySelector('#story'); //parent to story and buttons -- not used
 const storyText = document.querySelector('#storyText'); //story text
-const buttons = document.querySelector('#buttons'); //parent to opt1 and opt2 -- not used
 const opt1 = document.querySelector('#opt1'); //option 1 button
 const opt2 = document.querySelector('#opt2'); //option 2 button
 const reset = document.querySelector('#reset'); //option 2 button
 
-
+//state of the game
 let state;
-
+//contains all the story lines you wish to pursue, add here to add more 'states' to the game
+//state works like so
+//Starts at 0, depending on what their first choice is, it will add a s1 or s2 indicationg story 1 or story 2
+//every action there after adds either a 1 or 2 indicating the choices they have previously made
+//so the states life cycle goes like this
+// 0 => 0s1 => 0s12 => 0s122 => 0s1221 etc, until reset is pressed and it will revert back to 0.
 const storyBook = {
     beginning: {
-        story: "Opening screen - Replace with opening story",
+        story: "Opening screen to game",
         opt1: "Option 1",
         opt2: "Option 2",
         update: function(story, button1, button2) {
@@ -192,9 +195,9 @@ function checkState(state, e) {
     //Takes the state and option passed into func and calculates next state, using bracket notation to pass in the newly changed variable calculateState
     function _changeState(_state, _option) {
         const calculateState = _state + _option;
-        console.log("calculateState typeof: " + typeof calculateState)
-        console.log(`option ${_option} was pressed during state:  + ${_state}`);
-        console.log("calculateState: " + calculateState)
+        // console.log("calculateState typeof: " + typeof calculateState)
+        // console.log(`option ${_option} was pressed during state:  + ${_state}`);
+        // console.log("calculateState: " + calculateState)
         try {
             storyBook[`${calculateState}`].update(storyText, opt1, opt2)
         } catch (error) {
@@ -229,7 +232,7 @@ function endOfGame() {
     console.groupEnd();
     opt1.style.display = 'none';
     opt2.style.display = 'none';
-    storyText.innerText = "You've reached the end of the storyline!";
+    storyText.innerText = "You've reached the end of the storyline! Reset and explore another!";
 }
 
 //Themes -- Just for fun

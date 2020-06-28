@@ -9,18 +9,18 @@ $desktop: 840px;
     padding: 0;
 }
 
-// body {
-//     background: red;
-// }
+body {
+    background: rgb(0,212,255);
+    background: radial-gradient(circle, rgba(32,58,67,1) 0%, rgba(15,32,39,1) 70%, rgba(15,32,39,1) 100%);
+}
 
 #screen {
     display:grid;
     grid-template-columns: 1;
-    grid-template-rows: 1fr 40% 40%;
-    height: 100vh;
-    width: 100vw;
-    background: rgb(0,212,255);
-    background: radial-gradient(circle, rgba(32,58,67,1) 0%, rgba(15,32,39,1) 70%, rgba(15,32,39,1) 100%);
+    grid-template-rows: 1fr 45% 45%;
+    height: 100%;
+    width: 100%;
+
     color: #cecece;
     // box-sizing: border-box;
     #reset {
@@ -48,7 +48,7 @@ $desktop: 840px;
     }
     #story {
         display: grid;
-        grid-template-columns: 1;
+        grid-template-columns: 100%;
         grid-template-rows: 2;
         grid-template-areas: 
         "storyText"
@@ -56,17 +56,21 @@ $desktop: 840px;
         height: 100%;
         text-align: center;
         #storyText {
-            font-size: 2.5em;
+            font-size: 1.5em;
             grid-area: storyText;
             justify-self: center;
             align-self: end;
-            margin-bottom: 10vh;
+            margin: 5vh;
+            padding-left: 1em;
+            padding-right: 1em;
+            @include desktop {
+                font-size: 2.5em;
+            }
         }
         #buttons {
             grid-area: buttons;
-            width: 100vw;
+            // width: 100vw;
             display: grid;
-            
             grid-template-columns: 1;
             grid-template-rows: 2;
             grid-template-areas:
