@@ -1,0 +1,111 @@
+$desktop: 840px;
+@mixin desktop {
+    @media (min-width: #{$desktop}){
+        @content;
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// body {
+//     background: red;
+// }
+
+#screen {
+    display:grid;
+    grid-template-columns: 1;
+    grid-template-rows: 1fr 40% 40%;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0,212,255);
+    background: radial-gradient(circle, rgba(32,58,67,1) 0%, rgba(15,32,39,1) 70%, rgba(15,32,39,1) 100%);
+    color: #cecece;
+    // box-sizing: border-box;
+    #reset {
+        font-size: 1.5em;
+        margin: 10px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        border-width: 0px;
+        border-style: solid;
+        box-shadow: 0px 10px 10px rgba(15,32,39,1);
+        &:hover {
+            background: #cecece;
+            color: rgba(15,32,39,1);
+        }
+        color: inherit;
+        background: transparent;
+        justify-self: center;
+        height: 10vh;
+        width: 50vw;
+        @include desktop {
+            height: 7vh;
+            width: 30vw;
+        }
+    }
+    #story {
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: 2;
+        grid-template-areas: 
+        "storyText"
+        "buttons";
+        height: 100%;
+        text-align: center;
+        #storyText {
+            font-size: 2.5em;
+            grid-area: storyText;
+            justify-self: center;
+            align-self: end;
+            margin-bottom: 10vh;
+        }
+        #buttons {
+            grid-area: buttons;
+            width: 100vw;
+            display: grid;
+            
+            grid-template-columns: 1;
+            grid-template-rows: 2;
+            grid-template-areas:
+            "opt1"
+            "opt2";
+            justify-content: center;
+            align-content: start;
+            background: transparent;
+            height: auto;
+            @include desktop {
+                grid-template-columns: 1fr auto 1fr auto 1fr;
+                grid-template-areas:
+                ". opt1 . opt2 .";
+                }
+            #opt1 {
+                grid-area: opt1;
+            }
+
+            #opt2 {
+                grid-area: opt2;
+            }
+            #opt1, #opt2 {
+                font-size: 1.5em;
+                box-shadow: 0px 10px 10px rgba(15,32,39,1);
+                background: transparent;
+                color: inherit;
+                height: auto;
+                margin: 10px;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 10px;
+                border-color: #cecece;
+                border-width: 1px;
+                border-style: solid;
+                &:hover {
+                    background: #cecece;
+                    color: rgba(15,32,39,1);
+                }
+            }
+        }
+    }
+}
